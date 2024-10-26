@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form action="" method="post" class="card card-body">
+                <h1 class="text-center">Contáctenos</h1>
+                
+                 {% csrf_token %}
+                <div class="mb-3">
+                    <label for="asunto">Asunto:</label>
+                    <input type="text"name="asunto" id="asunto"class="form-control"placeholder="Escribe el tema a tratar">
+                </div>
+                <div class="mb-3">
+                    <label for="email">Email:</label>
+                    <input type="text"name="email" id="email"class="form-control"placeholder="Escribe tu dirrección de correo">
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje">Mensaje:</label>
+                    <input type="text"name="mensaje" id="mensaje"class="form-control"placeholder="Escribe un mensaje">
+                </div>
+                <button class="btn btn-primary">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

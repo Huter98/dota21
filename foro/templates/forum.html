@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+{% if user.is_authenticated %}
+
+<div>
+    <a class="btn btn-primary" href="/crear_blog">Crear Publicación</a>
+</div>
+{% else %}
+<div>
+    <p>Para publicar debes tener una cuenta </p>
+    <a class="btn btn-primary" href="/">Crear cuenta</a>
+</div>
+{% endif %}
+{% for post in post %}
+       
+
+  <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">{{post.subido}}</h6>
+        <h2 class="card-title">{{post.titulo}}:({{post.usuario}})</h2>
+        <p class="card-text">{{post.descripcion}}</p>
+      </div>
+      <img src="{{ post.foto.url }}" class="card-img-bottom" alt="...">
+    </div>
+         
+    <h6>Comentarios:</h6>
+        {% for i in post.coments.all %}
+            
+          <p class="card-text">{{i.subido}}-{{i.comentarios}} </p>
+             
+        {% endfor %}
+    
+  {% if user.is_authenticated %}
+   <div class="form-floating">
+   <form action="" method="post" class="card card-body">
+        <h1 class="text-center">Comentar</h1>
+        {% csrf_token %}
+          <div class="mb-3">
+            <label for="comentarios">Comentario:</label>
+            <input type="text"name="comentarios" id="comentarios"class="form-control"placeholder="Escribe un comentario">
+            </div>
+                <div class="mb-3">
+              
+                  <select name="relacion" id="id_relacion">
+                    <option value="{{post.id}}">{{post.titulo}}</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary">
+                    Comentar
+                </button>
+            </form>
+    </div>
+    {% endif %} 
+
+  
+
+
+ 
+{% endfor %}
+
+{% endblock %}

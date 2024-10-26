@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form action="" method="post" class="card card-body" enctype="multipart/form-data">
+                <h1 class="text-center">Crear Publicación</h1>
+                {{error}}
+                 {% csrf_token %}
+                <div class="mb-3">
+                    <label for="titulo">Título:</label>
+                    <input type="text"name="titulo" id="titulo"class="form-control"placeholder="Escribe un título para tu publicación">
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text"name="descripcion" id="descripcion"class="form-control"placeholder="Escribe una descripción">
+                </div>
+                <div class="mb-3">
+                    <label for="foto">Foto</label>
+                    <input type="file"name="foto" id="foto"class="form-control">
+                </div>
+                <div class="mb-3">
+              
+                    <select name="usuario" id="usuario">
+                      <option value="{{user.id}}">{{user}}</option>
+                    </select>
+                  </div>
+                <button class="btn btn-primary">
+                    Subir
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
+
+
+   

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<style>
+*{
+    list-style: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+    
+    .you{
+        background: #2f3640;
+        color: white;
+        border: 2px solid black;
+        width: 40%;
+        float:right;
+        position:sticky;
+        top: 20px;
+        margin-top: 100px;
+        
+        
+       
+    }
+    .you img{
+        width: 50px;
+        margin-top: 10px;
+        margin-left: 30px;
+        position:sticky;
+        top: 20px;
+    }
+    .you a{
+        color: white;
+        margin-top: 10px;
+        position:sticky;
+        top: 20px;
+        
+    }
+    .card{
+        width: 60%;
+        float:left;
+    }
+</style>
+<div class="contenedorgeneral" >
+    <aside>
+        <div class="you">
+            <ul>
+                <li>
+                    <img src="{% static 'youtube/wallace.png' %}" alt="">
+                    <a class="btn btn-success" href="https://www.youtube.com/@W.Wallace-Dota">W. Wallace</a>
+                </li>
+                <li>
+                    <img src="{% static 'youtube/qbandota.png' %}" alt="">
+                    <a class="btn btn-success" href="https://www.youtube.com/@Qbandota322">Qban_dota</a>
+                </li>
+                <li>
+                    <img src="{% static 'youtube/juanma.png' %}" alt="">
+                    <a  class="btn btn-success" href="https://www.youtube.com/@JuanMaGonzalez1998">JuanMa Dota</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    {% for carta in carta %}
+<div class="card mb-3">
+    <img src="{{ carta.foto.url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{carta.titulo}}</h5>
+        <h6 class="card-text">{{carta.subido}}</h6>
+        <p class="card-text">{{carta.descripcion}}</p>
+        <a  class="btn btn-primary" href="{{carta.enlace}}">Visitar Canal</a>
+    </div>
+</div>
+
+    {% endfor %}
+</div>
+
+        
+        
+        
+ 
+
+
+{% endblock %}
